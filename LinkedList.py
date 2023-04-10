@@ -71,6 +71,54 @@ class LinkedList():
 
         return "The value not in the list"
 
+    def deleteNode(self,location):
+        if self.head==None:
+          print("No linked list")
+
+        else:
+          if location==0:
+            if self.head==self.tail:
+              self.head=None
+              self.tail=None
+            else:
+              self.head=self.head.next
+          elif location==-1:
+            if self.head==self.tail:
+              self.head=self.tail
+            else:
+              node=self.head
+              while node is not None:
+                 if node.next==self.tail:
+                   break
+                 node =node.next
+              node.next=None
+              self.tail=node
+          else:
+              node =self.head
+              i=0
+              while i<location-1:
+                node=node.next
+                i+=1
+              new= node.next
+              node.next=new.next
+
+
+    def deleteEntire(self):
+      if self.head==None:
+        print("No LL exists")
+      else:
+        self.head=None
+        self.tail=None
+
+
+
+
+
+
+      
+
+
+
 
 L1=LinkedList()
 L1.insertLL(1, 0)
@@ -81,4 +129,10 @@ L1.insertLL(4, 1)
 print([node.value for node in L1])
 
 L1.searchLL(5)
-    
+L1.deleteNode(1)
+
+print([node.value for node in L1])
+
+L1.deleteEntire()
+
+print([node.value for node in L1])
